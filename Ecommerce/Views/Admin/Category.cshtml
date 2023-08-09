@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Ecommerce.Models.Category>
+
+@{
+    
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Category</h2>
+
+@if (TempData["InsertMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Success!</strong> @TempData["InsertMessage"].
+    </div>
+}
+
+@if (TempData["UpdateMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Success!</strong> @TempData["UpdateMessage"].
+    </div>
+}
+
+@if (TempData["DeleteMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Deleted!</strong> @TempData["DeleteMessage"].
+    </div>
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Displayorder)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.OrderBy(model => model.Displayorder))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Displayorder)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
