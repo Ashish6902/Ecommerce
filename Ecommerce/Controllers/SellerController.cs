@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace Ecommerce.Controllers
 {
@@ -23,7 +24,7 @@ namespace Ecommerce.Controllers
             List<Product> obj = dbcontext.GetData();
             return View(obj);
         }
-        // Display Create Category
+        // Display Create Product
         public ActionResult Create()
         {
             CategoryDBcontext dbcontext = new CategoryDBcontext();
@@ -31,15 +32,29 @@ namespace Ecommerce.Controllers
             ViewBag.Categories = new SelectList(categories, "Name", "Name");
             return View();
         }
-        //Add Category when click on submit
+        //Add Product when click on submit
         [HttpPost]
-        public ActionResult Create( Product pro)
+        public ActionResult Create(Product pro)
         {
-            
-            if (ModelState.IsValid == true)
+            byte[] imageData = null;
+
+            if (pro.ImageData != null && pro.ImageData.ContentLength > 0)
+            {
+                // Convert the image file to a byte array
+                using (var binaryReader = new BinaryReader(pro.ImageData.InputStream))
+                {
+                    imageData = binaryReader.ReadBytes(pro.ImageData.ContentLength);
+                }
+            }
+
+            // Set the binary image data to the corresponding property
+            pro.ImageDataBytes = imageData;
+
+            if (ModelState.IsValid)
             {
                 ProductDBcontext dBcontext = new ProductDBcontext();
                 bool check = dBcontext.createData(pro);
+
                 if (check)
                 {
                     TempData["InsertMessage"] = "Data Has been Inserted";
@@ -50,12 +65,10 @@ namespace Ecommerce.Controllers
 
             return View();
         }
+
         //to get edit view 
         public ActionResult Edit(int id)
         {
-            CategoryDBcontext dbcontext = new CategoryDBcontext();
-            List<Category> categories = dbcontext.listdata();
-            ViewBag.Categories = new SelectList(categories, "Id", "Name");
             ProductDBcontext dBcontext = new ProductDBcontext();
             var row = dBcontext.GetData().Find(model => model.Id == id);
             return View(row);
@@ -64,7 +77,7 @@ namespace Ecommerce.Controllers
         [HttpPost]
         public ActionResult Edit(int id, Product pro)
         {
-
+            pro.Id = id;
             if (ModelState.IsValid == true)
             {
                 ProductDBcontext dBcontext = new ProductDBcontext();
