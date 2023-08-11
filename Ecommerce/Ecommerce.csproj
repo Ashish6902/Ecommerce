@@ -126,6 +126,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminUiImage\ImagesUI.cs" />
+    <Compile Include="Models\AdminUiImage\imgDBcontext.cs" />
     <Compile Include="Models\Category\Category.cs" />
     <Compile Include="Models\Category\CategoryDBcontext.cs" />
     <Compile Include="Models\Product\Product.cs" />
@@ -194,6 +196,8 @@
     <Content Include="Views\Seller\Create.cshtml" />
     <Content Include="Views\Seller\Edit.cshtml" />
     <Content Include="Views\Seller\Delete.cshtml" />
+    <Content Include="Views\Admin\ImagesOfUI.cshtml" />
+    <Content Include="Views\Admin\EditImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

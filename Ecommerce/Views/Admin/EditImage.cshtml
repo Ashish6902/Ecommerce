@@ -1,0 +1,23 @@
+﻿@model Ecommerce.Models.AdminUiImage.ImagesUI
+
+@{
+    ViewBag.Title = "EditImage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>EditImage</h2>
+
+@using (Html.BeginForm("EditImage", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        <label for="imageFile">Select an image:</label>
+        <input type="file" id="imageFile" name="imageFile" />
+    </div>
+
+    <div>
+        <input type="submit" value="Upload Image" />
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "ImagesOfUI")
+</div>
