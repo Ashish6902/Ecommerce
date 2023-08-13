@@ -1,4 +1,5 @@
 ﻿using Ecommerce.Models;
+using Ecommerce.Models.AdminUiImage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,9 @@ namespace Ecommerce.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            imgDBcontext dbcontext = new imgDBcontext();
+            List<ImagesUI> obj = dbcontext.GetData();
+            return View(obj);
         }
 
         public ActionResult About()

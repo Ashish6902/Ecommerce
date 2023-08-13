@@ -1,0 +1,57 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #4F4557;
+}
+
+.slider-container {
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+.slider {
+    width: 100%;
+    height: 100%;
+    position: relative; /* Position the slider container for relative positioning of buttons */
+}
+
+.slider img {
+    width: 100%;
+    height: auto;
+    display: none;
+    aspect-ratio: 16/9;
+}
+
+.slider img:first-child {
+    display: block;
+}
+
+.slider-nav {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    position: absolute; /* Position the buttons absolutely within the slider */
+    top: 50%; /* Position the buttons vertically in the middle of the slider */
+    transform: translateY(-50%); /* Adjust for vertical alignment */
+}
+
+    .slider-nav.prev {
+        left: 0; /* Position the "Previous" button on the left side */
+    }
+
+    .slider-nav.next {
+        right: 0; /* Position the "Next" button on the right side */
+    }
