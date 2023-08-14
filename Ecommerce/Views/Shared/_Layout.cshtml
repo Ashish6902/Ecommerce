@@ -20,6 +20,12 @@
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@User.Identity.Name</li>
+                        <li>@Html.ActionLink("Logout", "Logout","Accounts")</li>
+                    }
                 </ul>
             </div>
         </div>
