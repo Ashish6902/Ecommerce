@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Ecommerce.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         public ActionResult Index()

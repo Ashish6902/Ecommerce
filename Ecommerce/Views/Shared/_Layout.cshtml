@@ -6,6 +6,63 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+    .navbar-nav {
+        margin-left: auto;
+        display: flex;
+        align-items: center; /* Vertical center alignment */
+    }
+
+    .nav-link {
+        color: #F4EEE0;
+    }
+
+    .nav-link:hover {
+        color: #6D5D6E;
+    }
+
+    .nav-button {
+        background-color: #6D5D6E;
+        border: none;
+        color: #F4EEE0;
+        padding: 8px 20px;
+        border-radius: 4px;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+     .user-info {
+            color: white;
+            margin-right: 10px;
+      }
+
+        .user-badge {
+            display: inline-block;
+            margin-right:10px;
+            color: #F4EEE0; /* Use the user info text color */
+            padding: 8px 12px;
+            border-radius: 50%; /* Make it round */
+            font-weight: bold;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container.body-content {
+            background-color: #6D5D6E;
+            padding-top: 20px;
+            flex: 1;
+        }
+
+        #sticky-footer {
+            flex-shrink: 0;
+        }
+</style>
+
+
+
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
@@ -20,19 +77,31 @@
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
 
+                <ul class="navbar-nav">
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li>@User.Identity.Name</li>
-                        <li>@Html.ActionLink("Logout", "Logout","Accounts")</li>
+                        <li class="nav-item">
+                            <span class="user-badge">@User.Identity.Name</span>
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Logout", "Logout", "Accounts", new { area = "" }, new { @class = "nav-button" })
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("Login", "Login", "Accounts", new { area = "" }, new { @class = "nav-button" })
+                        </li>
                     }
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container body-content" style="background-color: #6D5D6E; padding-top:20px;">
+
+    <div class="container body-content" style="background-color: #6D5D6E; height: 100vh; padding-top: 20px; margin-bottom:20px;padding-bottom:20px;">
         @RenderBody()
-        <hr />
     </div>
     <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
         <div class="container text-center">
