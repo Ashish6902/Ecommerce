@@ -1,4 +1,4 @@
-﻿using Ecommerce.Models.Authentication;
+﻿using Ecommerce.Models.EntityAuthentication.DBoperations;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -12,13 +12,22 @@ namespace Ecommerce.Controllers
 {
     public class AccountsController : Controller
     {
+        LoginRepository repository = null;
+        public AccountsController()
+        {
+            repository = new LoginRepository();
+        }
         public ActionResult Register()
         { 
             return View();
         }
         [HttpPost]
-        public ActionResult Register(AllDetails model) 
+        public ActionResult Register(Logins model) 
         { 
+            if(ModelState.IsValid) 
+            {
+                repository.Adduser(model);
+            }
             return View();
         }
         public ActionResult Login()
@@ -26,12 +35,12 @@ namespace Ecommerce.Controllers
             return View();
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public ActionResult Login(AllDetails model)
         {
                 return View();
             
-        }
+        }*/
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
