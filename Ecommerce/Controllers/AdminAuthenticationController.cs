@@ -1,38 +1,36 @@
 ﻿using Ecommerce.Models.EntityAuthentication.DBoperations;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-// this is only for user register and log in
+
 namespace Ecommerce.Controllers
 {
-    public class AccountsController : Controller
+    public class AdminAuthenticationController : Controller
     {
         LoginRepository repository = null;
         // constructor
-        public AccountsController()
+        public AdminAuthenticationController()
         {
             repository = new LoginRepository();
         }
         //for register
         public ActionResult Register()
-        { 
+        {
             return View();
         }
         [HttpPost]
-        public ActionResult Register(Logins model) 
-        { 
-            if(ModelState.IsValid) 
+        public ActionResult Register(Logins model)
+        {
+            if (ModelState.IsValid)
             {
-                int i = repository.Adduser(model);
-                if(i>0) 
+                int i = repository.AddAdmin(model);
+                if (i > 0)
                 {
                     TempData["Created"] = "New user is created";
-                    return RedirectToAction("Login");
+                    return RedirectToAction("Login", "SellerAuthetication");
                 }
             }
             return View();
@@ -47,9 +45,9 @@ namespace Ecommerce.Controllers
         [HttpPost]
         public ActionResult Login(Logins model)
         {
-            using(var context =new EcommerceEntities())
+            using (var context = new EcommerceEntities())
             {
-                bool isValid = context.Logins.Any(x=>x.UserName == model.UserName&&x.HashedPassword == model.HashedPassword);
+                bool isValid = context.Logins.Any(x => x.UserName == model.UserName && x.HashedPassword == model.HashedPassword);
                 if (isValid)
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, false);
@@ -66,8 +64,6 @@ namespace Ecommerce.Controllers
             return RedirectToAction("Login");
         }
 
-
-      
-
+    
     }
 }

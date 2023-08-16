@@ -11,8 +11,33 @@ namespace Ecommerce.Models.EntityAuthentication.DBoperations
         {
             using (var context = new EcommerceEntities())
             {
-                Logins log = new Logins() 
-                { 
+                Logins log = new Logins()
+                {
+                    UserName = model.UserName,
+                    HashedPassword = model.HashedPassword,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    PhoneNo = model.PhoneNo,
+                    Email = model.Email,
+                    UserAddress = model.UserAddress,
+                    Roles = new Roles()
+                    {
+                        Roles1 = "User"
+                    }
+                };
+                
+                context.Logins.Add(log);
+                context.SaveChanges();
+                return model.Login_id;
+            }
+        }
+
+        public int AddSeller(Logins model)
+        {
+            using (var context = new EcommerceEntities())
+            {
+                Logins log = new Logins()
+                {
                     UserName = model.UserName,
                     HashedPassword = model.HashedPassword,
                     FirstName = model.FirstName,
@@ -21,13 +46,40 @@ namespace Ecommerce.Models.EntityAuthentication.DBoperations
                     Email = model.Email,
                     UserAddress = model.UserAddress,
                     BrandName = model.BrandName,
-                    Role_id = model.Role_id
-
+                    Roles = new Roles()
+                    {
+                        Roles1 = "Seller"
+                    }
                 };
-                
+
                 context.Logins.Add(log);
                 context.SaveChanges();
-                return model.Login_id;
+                return log.Login_id;
+            }
+        }
+
+        public int AddAdmin(Logins model)
+        {
+            using (var context = new EcommerceEntities())
+            {
+                Logins log = new Logins()
+                {
+                    UserName = model.UserName,
+                    HashedPassword = model.HashedPassword,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    PhoneNo = model.PhoneNo,
+                    Email = model.Email,
+                    UserAddress = model.UserAddress,
+                    Roles = new Roles()
+                    {
+                        Roles1 = "Admin"
+                    }
+                };
+
+                context.Logins.Add(log);
+                context.SaveChanges();
+                return log.Login_id;
             }
         }
     }
