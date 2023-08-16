@@ -8,7 +8,6 @@ using System.Web.Mvc;
 
 namespace Ecommerce.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
