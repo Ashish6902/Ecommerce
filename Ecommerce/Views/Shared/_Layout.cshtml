@@ -7,42 +7,44 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <style>
-    .navbar-nav {
-        margin-left: auto;
-        display: flex;
-        align-items: center; /* Vertical center alignment */
-    }
+        .navbar-nav {
+            margin-left: auto;
+            display: flex;
+            align-items: center; /* Vertical center alignment */
+        }
 
-    .nav-link {
-        color: #F4EEE0;
-    }
+        .nav-link {
+            color: #F4EEE0;
+        }
 
-    .nav-link:hover {
-        color: #6D5D6E;
-    }
+            .nav-link:hover {
+                color: #6D5D6E;
+            }
 
-    .nav-button {
-        background-color: #6D5D6E;
-        border: none;
-        color: #F4EEE0;
-        padding: 8px 20px;
-        border-radius: 4px;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-     .user-info {
+        .nav-button {
+            background-color: #6D5D6E;
+            border: none;
+            color: #F4EEE0;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .user-info {
             color: white;
             margin-right: 10px;
-      }
+        }
 
         .user-badge {
             display: inline-block;
-            margin-right:10px;
+            margin-right: 10px;
             color: #F4EEE0; /* Use the user info text color */
             padding: 8px 12px;
             border-radius: 50%; /* Make it round */
             font-weight: bold;
         }
+
         body {
             display: flex;
             flex-direction: column;
@@ -59,7 +61,7 @@
         #sticky-footer {
             flex-shrink: 0;
         }
-</style>
+    </style>
 
 
 
@@ -84,6 +86,9 @@
                     {
                         <li class="nav-item">
                             <span class="user-badge">@User.Identity.Name</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="user-badge"><img src="~/Images/user1.png"  height="30px" width ="30px"></span>
                         </li>
                         <li class="nav-item">
                             @Html.ActionLink("Logout", "Logout", "Accounts", new { area = "" }, new { @class = "nav-button" })

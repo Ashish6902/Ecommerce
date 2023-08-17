@@ -255,6 +255,7 @@
     <Content Include="Views\SellerAuthetication\Login.cshtml" />
     <Content Include="Views\AdminAuthentication\Register.cshtml" />
     <Content Include="Views\AdminAuthentication\Login.cshtml" />
+    <Content Include="Views\Home\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

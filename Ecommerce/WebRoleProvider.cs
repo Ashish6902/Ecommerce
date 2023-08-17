@@ -40,7 +40,7 @@ namespace Ecommerce
             using(var context = new EcommerceEntities())
             {
                 var result = (from Logins in context.Logins
-                             join role in context.Roles on Logins.Login_id equals role.role_id
+                             join role in context.Roles on Logins.Role_id equals role.role_id
                              where Logins.UserName == username
                              select role.Roles1).ToArray();
 

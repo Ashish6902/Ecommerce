@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace Ecommerce.Controllers
 {
+    [Authorize(Roles = "Seller")]
     public class SellerController : Controller
     {
         // GET: Seller
@@ -20,8 +21,9 @@ namespace Ecommerce.Controllers
         //to get view 
         public ActionResult Products()
         {
+            int userId = (int)Session["UserId"];
             ProductDBcontext dbcontext = new ProductDBcontext();
-            List<Product> obj = dbcontext.GetData();
+            List<Product> obj = dbcontext.GetData(userId);
             return View(obj);
         }
         // Display Create Product
@@ -52,8 +54,9 @@ namespace Ecommerce.Controllers
 
             if (ModelState.IsValid)
             {
+                int sellerId = (int)Session["UserId"];
                 ProductDBcontext dBcontext = new ProductDBcontext();
-                bool check = dBcontext.createData(pro);
+                bool check = dBcontext.CreateData(pro,sellerId);
 
                 if (check)
                 {
@@ -69,8 +72,9 @@ namespace Ecommerce.Controllers
         //to get edit view 
         public ActionResult Edit(int id)
         {
+            int userId = (int)Session["UserId"];
             ProductDBcontext dBcontext = new ProductDBcontext();
-            var row = dBcontext.GetData().Find(model => model.Id == id);
+            var row = dBcontext.GetData(userId).Find(model => model.Id == id);
             return View(row);
         }
         //to edit in view 
@@ -94,8 +98,9 @@ namespace Ecommerce.Controllers
         //to get delete view
         public ActionResult Delete(int id)
         {
+            int userId = (int)Session["UserId"];
             ProductDBcontext dBcontext = new ProductDBcontext();
-            var row = dBcontext.GetData().Find(model => model.Id == id);
+            var row = dBcontext.GetData(userId).Find(model => model.Id == id);
             return View(row);
         }
         //when click on delete

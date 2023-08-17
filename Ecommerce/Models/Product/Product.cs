@@ -24,6 +24,7 @@ namespace Ecommerce.Models.Product
         public HttpPostedFileBase ImageData { get; set; }
         //for iamge
         public byte[] ImageDataBytes { get; set; }
+        public int sellerId{ get; set; }
 
     }
 }

@@ -47,21 +47,23 @@ namespace Ecommerce.Controllers
         {
             using (var context = new EcommerceEntities())
             {
-                bool isValid = context.Logins.Any(x => x.UserName == model.UserName && x.HashedPassword == model.HashedPassword);
-                if (isValid)
+                var user = context.Logins.FirstOrDefault(x => x.UserName == model.UserName && x.HashedPassword == model.HashedPassword);
+                if (user != null)
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, false);
-                    return RedirectToAction("index", "Home");
+                    int userId = user.Login_id;
+                    Session["UserId"] = userId;
+                    return RedirectToAction("index", "Seller");
                 }
             }
             return View();
-
         }
+
         //for logout
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Login");
+            return RedirectToAction("index", "Home");
         }
 
     }

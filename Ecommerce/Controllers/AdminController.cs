@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Ecommerce.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         public ActionResult Index()
@@ -16,6 +16,7 @@ namespace Ecommerce.Controllers
             return View();
         }
 
+        // FOR CATEGORY ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         //Display Category 
         public ActionResult Category()
@@ -30,7 +31,6 @@ namespace Ecommerce.Controllers
 
             return View();
         }
-
 
         //Add Category when click on submit
         [HttpPost]
@@ -65,6 +65,7 @@ namespace Ecommerce.Controllers
             var row = dBcontext.GetData().Find(model => model.ID == id);
             return View(row);
         }
+
         //when click on submit button of edit 
         [HttpPost]
         public ActionResult Edit(int id, Category stu)
@@ -82,8 +83,6 @@ namespace Ecommerce.Controllers
             }
             return View();
         }
-
-
 
         //to get delete Category
         public ActionResult Delete(int id)
@@ -109,21 +108,36 @@ namespace Ecommerce.Controllers
             return View();
         }
         //to display product
+
+
+
+        //FOR PRODUCTS ////////////////////////////////////////////////////////////////////////////////////////////// 
+
+        // to display products to admin
         public ActionResult Products()
         {
 
             return View();
         }
+
+
+        // FOR USER //////////////////////////////////////////////////////////////////////////////////////////////////
+
         //to display users
         public ActionResult Users()
         {
             return View();
         }
+        // FOR SELLER //////////////////////////////////////////////////////////////////////////////////////////////////
+
         //to display sellers
         public ActionResult Sellers()
         {
             return View();
         }
+
+        // FOR SLIDERS IMAGE ////////////////////////////////////////////////////////////////////////////////////////////
+
         //to edit ui
         public ActionResult ImagesOfUI()
         {
@@ -132,7 +146,7 @@ namespace Ecommerce.Controllers
             return View(obj);
         }
         // to upload images
-        public ActionResult UploadImage(HttpPostedFileBase imageFile)
+        /*public ActionResult UploadImage(HttpPostedFileBase imageFile)
         {
             if (imageFile != null && imageFile.ContentLength > 0)
             {
@@ -148,12 +162,13 @@ namespace Ecommerce.Controllers
                 return View("ImagesOfUI");
             }
             return RedirectToAction("Index");
-        }
+        }*/ //this is to add image 
         // to edit image
         public ActionResult EditImage(int id)
         {
             return View();
         }
+        // when click on edit 
         [HttpPost]
         public ActionResult EditImage(int id, HttpPostedFileBase imageFile)
         {
@@ -173,5 +188,6 @@ namespace Ecommerce.Controllers
             }
             return View();
         }
+
     }
 }

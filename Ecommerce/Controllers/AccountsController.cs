@@ -63,7 +63,7 @@ namespace Ecommerce.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Login");
+            return RedirectToAction("index", "Home");
         }
 
 

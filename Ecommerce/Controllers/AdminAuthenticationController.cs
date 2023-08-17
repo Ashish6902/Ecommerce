@@ -30,7 +30,7 @@ namespace Ecommerce.Controllers
                 if (i > 0)
                 {
                     TempData["Created"] = "New user is created";
-                    return RedirectToAction("Login", "SellerAuthetication");
+                    return RedirectToAction("Login", "AdminAuthentication");
                 }
             }
             return View();
@@ -51,7 +51,7 @@ namespace Ecommerce.Controllers
                 if (isValid)
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, false);
-                    return RedirectToAction("index", "Home");
+                    return RedirectToAction("index", "Admin");
                 }
             }
             return View();
@@ -61,7 +61,7 @@ namespace Ecommerce.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Login");
+            return RedirectToAction("index","Home");
         }
 
     
