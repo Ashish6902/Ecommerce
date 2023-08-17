@@ -1,5 +1,6 @@
 ﻿using Ecommerce.Models;
 using Ecommerce.Models.AdminUiImage;
+using Ecommerce.Models.user;
 using System.Collections.Generic;
 using System.IO;
 using System.Web;
@@ -126,8 +127,17 @@ namespace Ecommerce.Controllers
         //to display users
         public ActionResult Users()
         {
-            return View();
+            userDBcontext dbcontext = new userDBcontext();
+            List<User> obj = dbcontext.GetUserData();
+            return View(obj);
+
         }
+        public ActionResult DeleteUser()
+        {
+
+            return View();
+        } //  incomplete 
+
         // FOR SELLER //////////////////////////////////////////////////////////////////////////////////////////////////
 
         //to display sellers

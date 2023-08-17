@@ -32,7 +32,7 @@ namespace Ecommerce.Controllers
                 if(i>0) 
                 {
                     TempData["Created"] = "New user is created";
-                    return RedirectToAction("Login");
+                    return RedirectToAction("Login", "Accounts");
                 }
             }
             return View();

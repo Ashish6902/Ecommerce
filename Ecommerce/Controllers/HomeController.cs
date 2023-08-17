@@ -1,5 +1,6 @@
 ﻿using Ecommerce.Models;
 using Ecommerce.Models.AdminUiImage;
+using Ecommerce.Models.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,8 +36,10 @@ namespace Ecommerce.Controllers
 
         public ActionResult Products() 
         {
+            ProductDBcontext dbcontext = new ProductDBcontext();
+            List<Product> obj = dbcontext.GetAllProductsData();
+            return View(obj);
 
-            return View();
         }
         [Authorize(Roles ="User")]
         public ActionResult Cart()

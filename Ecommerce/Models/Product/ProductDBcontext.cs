@@ -54,9 +54,6 @@ namespace Ecommerce.Models.Product
             }
             return Product_data;
         }
-
-
-
         // to insert data
         public bool CreateData(Product pro, int sellerId)
         {
@@ -85,8 +82,6 @@ namespace Ecommerce.Models.Product
                 }
             }
         }
-
-
         // to update data in table 
         public bool UpdateData(Product pro)
         {
@@ -129,5 +124,38 @@ namespace Ecommerce.Models.Product
                 return false;
             }
         }
+        // to get all products data
+        public List<Product> GetAllProductsData()
+        {
+            List<Product> Product_data = new List<Product>();
+
+            using (SqlConnection conn = new SqlConnection(cs))
+            {
+                SqlCommand cmd = new SqlCommand("GetProducts", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                conn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        Product pro = new Product();
+                        pro.Id = Convert.ToInt32(dr.GetValue(0).ToString());
+                        pro.Price = Convert.ToInt32(dr.GetValue(1).ToString());
+                        pro.ProductName = dr.GetValue(2).ToString();
+                        pro.Description = dr.GetValue(3).ToString();
+                        pro.Count = Convert.ToInt32(dr.GetValue(4).ToString());
+                        pro.Category = dr.GetValue(5).ToString();
+                        if (!dr.IsDBNull(6))
+                        {
+                            pro.ImageDataBytes = (byte[])dr.GetValue(6);
+                        }
+                        pro.sellerId = Convert.ToInt32(dr.GetValue(7).ToString());
+                        Product_data.Add(pro);
+                    }
+                }
+            }
+            return Product_data;
+        }
+
     }
 }
