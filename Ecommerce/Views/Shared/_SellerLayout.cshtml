@@ -17,8 +17,22 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Seller", new { area = "" }, new { @class = "nav-link" })</li
+                    <li>@Html.ActionLink("Home", "Index", "Seller", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Products", "Products", "seller", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+                <ul class="navbar-nav">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <span class="user-badge">@User.Identity.Name</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="user-badge"><img src="~/Images/user1.png" height="30px" width="30px"></span>
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Logout", "Logout", "Accounts", new { area = "" }, new { @class = "nav-button" })
+                        </li>
+                    }
                 </ul>
             </div>
         </div>

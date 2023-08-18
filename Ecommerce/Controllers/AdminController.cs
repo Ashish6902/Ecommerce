@@ -1,5 +1,7 @@
 ﻿using Ecommerce.Models;
 using Ecommerce.Models.AdminUiImage;
+using Ecommerce.Models.Product;
+using Ecommerce.Models.Seller;
 using Ecommerce.Models.user;
 using System.Collections.Generic;
 using System.IO;
@@ -117,7 +119,9 @@ namespace Ecommerce.Controllers
         // to display products to admin
         public ActionResult Products()
         {
-
+            ProductDBcontext dbcontext = new ProductDBcontext();
+            List<Product> obj = dbcontext.GetAllProductsData();
+            return View(obj);
             return View();
         }
 
@@ -143,8 +147,11 @@ namespace Ecommerce.Controllers
         //to display sellers
         public ActionResult Sellers()
         {
-            return View();
+            sellerDBcontext dbcontext = new sellerDBcontext();
+            List<Seller> obj = dbcontext.GetSellerData();
+            return View(obj);
         }
+
 
         // FOR SLIDERS IMAGE ////////////////////////////////////////////////////////////////////////////////////////////
 

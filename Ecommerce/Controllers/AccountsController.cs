@@ -50,6 +50,7 @@ namespace Ecommerce.Controllers
             using(var context =new EcommerceEntities())
             {
                 bool isValid = context.Logins.Any(x=>x.UserName == model.UserName&&x.HashedPassword == model.HashedPassword);
+                
                 if (isValid)
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, false);

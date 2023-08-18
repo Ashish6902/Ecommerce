@@ -44,6 +44,12 @@ namespace Ecommerce.Controllers
         [Authorize(Roles ="User")]
         public ActionResult Cart()
         {
+        
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Cart(int id )
+        {
 
             return View();
         }

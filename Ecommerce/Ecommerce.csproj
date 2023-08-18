@@ -157,11 +157,15 @@
     </Compile>
     <Compile Include="Models\AdminUiImage\ImagesUI.cs" />
     <Compile Include="Models\AdminUiImage\imgDBcontext.cs" />
+    <Compile Include="Models\Cart\Cart.cs" />
+    <Compile Include="Models\Cart\CartDbcontext.cs" />
     <Compile Include="Models\Category\Category.cs" />
     <Compile Include="Models\Category\CategoryDBcontext.cs" />
     <Compile Include="Models\EntityAuthentication\DBoperations\LoginRepository.cs" />
     <Compile Include="Models\Product\Product.cs" />
     <Compile Include="Models\Product\ProductDBcontext.cs" />
+    <Compile Include="Models\Seller\Seller.cs" />
+    <Compile Include="Models\Seller\sellerDBcontext.cs" />
     <Compile Include="Models\user\User.cs" />
     <Compile Include="Models\user\userDBcontext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -260,6 +264,8 @@
     <Content Include="Views\Home\Cart.cshtml" />
     <Content Include="Views\Admin\Users.cshtml" />
     <Content Include="Views\Home\Products.cshtml" />
+    <Content Include="Views\Admin\Sellers.cshtml" />
+    <Content Include="Views\Admin\Products.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
