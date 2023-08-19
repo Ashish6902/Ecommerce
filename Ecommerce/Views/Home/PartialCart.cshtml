@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Ecommerce.Models.Cart.Cart>
+
+@{
+    ViewBag.Title = "PartialCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Would you like to add this item in Cart</h1>
+
+@using (Html.BeginForm())
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>c
+            <th>
+                @Html.DisplayNameFor(model => model.Count)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                Image
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.EditorFor(modelItem => item.Count)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @if (item.ImageDataBytes != null && item.ImageDataBytes.Length > 0)
+                    {
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.ImageDataBytes)" alt="Image" style="height:100PX;width:100PX" />
+                    }
+                    else
+                    {
+                        <p>No image available</p>
+                    }
+                </td>
+            </tr>
+         }
+
+    </table>
+}

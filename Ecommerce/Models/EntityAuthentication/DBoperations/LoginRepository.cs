@@ -7,6 +7,7 @@ namespace Ecommerce.Models.EntityAuthentication.DBoperations
 {
     public class LoginRepository
     {
+
         public int Adduser(Logins model)
         {
             using (var context = new EcommerceEntities())

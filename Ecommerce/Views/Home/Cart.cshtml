@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<Ecommerce.Models.Cart.Cart>
+
 @{
     ViewBag.Title = "Cart";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,3 +7,48 @@
 
 <h2>Cart</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            Images
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @if (item.ImageDataBytes != null && item.ImageDataBytes.Length > 0)
+            {
+                <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.ImageDataBytes)" alt="Image" style="height:100PX;width:100PX" />
+            }
+            else
+            {
+                <p>No image available</p>
+            }
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,5 +1,6 @@
 ﻿using Ecommerce.Models;
 using Ecommerce.Models.AdminUiImage;
+using Ecommerce.Models.Cart;
 using Ecommerce.Models.Product;
 using System;
 using System.Collections.Generic;
@@ -41,17 +42,21 @@ namespace Ecommerce.Controllers
             return View(obj);
 
         }
+        public ActionResult AddtoCart(int id)
+        {
+            int sellerId = (int)Session["UserId"];
+            CartDbcontext dBcontext = new CartDbcontext();
+            dBcontext.CreateCartData(id,sellerId);
+            return RedirectToAction("Products");
+        }
         [Authorize(Roles ="User")]
         public ActionResult Cart()
         {
+            int sellerId = (int)Session["UserId"];
+            CartDbcontext dBcontext = new CartDbcontext();
+            var row = dBcontext.GetCartData(sellerId);
+            return View(row);
+        }
         
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Cart(int id )
-        {
-
-            return View();
-        }
     }
 }

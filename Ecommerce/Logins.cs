@@ -11,19 +11,27 @@ namespace Ecommerce
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Logins
     {
         public int Login_id { get; set; }
+        [Required]
         public string UserName { get; set; }
+        [Required]
         public string HashedPassword { get; set; }
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName { get; set; }
-        public Nullable<long> PhoneNo { get; set; }
+        [Required]
+        public long PhoneNo { get; set; }
+        [Required]
         public string Email { get; set; }
+        [Required]
         public string UserAddress { get; set; }
         public string BrandName { get; set; }
-        public Nullable<int> Role_id { get; set; }
+        public int Role_id { get; set; }
     
         public virtual Roles Roles { get; set; }
     }

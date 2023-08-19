@@ -88,10 +88,16 @@
                             <span class="user-badge">@User.Identity.Name</span>
                         </li>
                         <li class="nav-item">
-                            <span class="user-badge"><img src="~/Images/user1.png"  height="30px" width ="30px"></span>
+                            <span class="user-badge"><img src="~/Images/user1.png" height="30px" width="30px"></span>
                         </li>
                         <li class="nav-item">
                             @Html.ActionLink("Logout", "Logout", "Accounts", new { area = "" }, new { @class = "nav-button" })
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            @Html.ActionLink("Login", "Login", "Accounts", new { area = "" }, new { @class = "nav-button" })
                         </li>
                     }
                 </ul>
