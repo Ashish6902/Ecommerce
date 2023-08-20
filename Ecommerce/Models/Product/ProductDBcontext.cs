@@ -156,6 +156,11 @@ namespace Ecommerce.Models.Product
             }
             return Product_data;
         }
+        //method to get only count
+        public int GetCount()
+        {
 
+            return 1;
+        }
     }
 }

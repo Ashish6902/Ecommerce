@@ -73,5 +73,24 @@ namespace Ecommerce.Models.Cart
                 }
             }
         }
+        //to remove from cart
+        public bool DeleteCartData(int id)
+        {
+            SqlConnection conn = new SqlConnection(cs);
+            SqlCommand cmd = new SqlCommand("DeleteCartData", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Cart_id", id);
+            conn.Open();
+            int i = cmd.ExecuteNonQuery();
+            conn.Close();
+            if (i > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

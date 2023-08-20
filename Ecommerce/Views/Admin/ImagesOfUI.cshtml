@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>ImagesOfUI</h2>
+<h2>Images Of UI</h2>
 
 @*@using (Html.BeginForm("UploadImage", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -19,7 +19,7 @@
     </div>
 }*@
 
-<table class="table">
+<table class="table table-hover table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ImageId)
@@ -48,7 +48,7 @@
                     }
             </td>
             <td>
-                @Html.ActionLink("Edit Image", "EditImage", new { id = item.ImageId })
+                @Html.ActionLink("Edit Image", "EditImage", new { id = item.ImageId }, new { @class = "nav-button" })
             </td>
         </tr>
     }

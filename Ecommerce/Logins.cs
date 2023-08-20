@@ -16,18 +16,26 @@ namespace Ecommerce
     public partial class Logins
     {
         public int Login_id { get; set; }
+        [Display(Name = "User Name")]
         [Required]
         public string UserName { get; set; }
+        [Display(Name = "Password")]
         [Required]
         public string HashedPassword { get; set; }
+        [Display(Name = "First Name")]
         [Required]
         public string FirstName { get; set; }
+        [Display(Name = "Last Name")]
         [Required]
         public string LastName { get; set; }
+        [Display(Name = "Phone Number")]
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "Entered phone number must be 10 digits.")]
         [Required]
         public long PhoneNo { get; set; }
+        [Display(Name = "Email")]
         [Required]
         public string Email { get; set; }
+        [Display(Name = "Address")]
         [Required]
         public string UserAddress { get; set; }
         public string BrandName { get; set; }

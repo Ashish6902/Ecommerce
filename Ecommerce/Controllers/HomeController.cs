@@ -47,7 +47,13 @@ namespace Ecommerce.Controllers
             int sellerId = (int)Session["UserId"];
             CartDbcontext dBcontext = new CartDbcontext();
             dBcontext.CreateCartData(id,sellerId);
-            return RedirectToAction("Products");
+            return RedirectToAction("Cart");
+        }
+        public ActionResult DeleteCartData(int id)
+        {
+            CartDbcontext dBcontext = new CartDbcontext();
+            dBcontext.DeleteCartData(id);
+            return RedirectToAction("Cart");
         }
         [Authorize(Roles ="User")]
         public ActionResult Cart()

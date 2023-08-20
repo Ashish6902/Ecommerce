@@ -24,31 +24,44 @@
         <th>
             Images
         </th>
+        <th>
+        </th>
     </tr>
+    @{
+        int Total = 0;
+    }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @if (item.ImageDataBytes != null && item.ImageDataBytes.Length > 0)
-            {
-                <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.ImageDataBytes)" alt="Image" style="height:100PX;width:100PX" />
-            }
-            else
-            {
-                <p>No image available</p>
-            }
-        </td>
-    </tr>
-}
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+                @{
+                    Total = Total + item.Price;
+                }
+            </td>
+            <td>
+                @if (item.ImageDataBytes != null && item.ImageDataBytes.Length > 0)
+                {
+                    <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.ImageDataBytes)" alt="Image" style="height:100PX;width:100PX" />
+                }
+                else
+                {
+                    <p>No image available</p>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Remove", "DeleteCartData", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>
+<h2>Total Price is @Total</h2>
+@Html.ActionLink("Products", "Products", "Home")

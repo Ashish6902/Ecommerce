@@ -29,7 +29,7 @@ namespace Ecommerce.Models.EntityAuthentication.DBoperations
                 
                 context.Logins.Add(log);
                 context.SaveChanges();
-                return model.Login_id;
+                return 1;
             }
         }
 

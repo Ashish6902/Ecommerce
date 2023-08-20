@@ -8,7 +8,7 @@
 <h2>Products</h2>
 
 
-<table class="table">
+<table class="table table-hover table-bordered">
     <tr>
         <th>
             Image
@@ -59,7 +59,7 @@
             @Html.DisplayFor(modelItem => item.Category)
         </td>
         <td>
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            @Html.ActionLink("Delete", "DeleteProduct", "Admin", new { id = item.Id }, new { @class = "nav-button" })
         </td>
     </tr>
 }

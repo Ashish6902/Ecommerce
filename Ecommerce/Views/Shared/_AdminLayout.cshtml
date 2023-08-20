@@ -60,13 +60,28 @@
         #sticky-footer {
             flex-shrink: 0;
         }
+
+        .nav-button {
+            background-color:#4E4FEB;
+            text-decoration: none;
+            color: #EEEEEE;
+        }
+
+        .nav-button:hover {
+                color: #EEEEEE; 
+        }
+
+        .logged-in {
+            color: green;
+        }
+
     </style>
 
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
-            @Html.ActionLink("Application name", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("TrendyTrades", "Index", "Admin", new { area = "" }, new { @class = "navbar-brand" })
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -85,7 +100,9 @@
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item">
+                            <span class="logged-in">●</span>
                             <span class="user-badge">@User.Identity.Name</span>
+
                         </li>
                         <li class="nav-item">
                             <span class="user-badge"><img src="~/Images/user1.png" height="30px" width="30px"></span>

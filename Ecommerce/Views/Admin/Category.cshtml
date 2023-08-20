@@ -5,8 +5,21 @@
     ViewBag.Title = "Category";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+<style>
+    /* CSS for preventing color change on hover */
+    .nav-button {
+        text-decoration: none;
+        color: #F4EEE0; /* Set the default text color */
+    }
 
+        .nav-button:hover {
+            color: #F4EEE0; /* Maintain the same text color on hover */
+        }
+
+   
+</style>
 <h2>Category</h2>
+<br />
 
 @if (TempData["InsertMessage"] != null)
 {
@@ -34,9 +47,11 @@
 
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create" ,"Admin", new { @class = "nav-button" })
 </p>
-<table class="table">
+<br />
+
+<table class="table table-hover table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -57,8 +72,8 @@
                 @Html.DisplayFor(modelItem => item.Displayorder)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID })
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID },new { @class = "nav-button" }) 
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "nav-button" })
             </td>
         </tr>
     }

@@ -10,14 +10,15 @@
 @using (Html.BeginForm("EditImage", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div>
-        <label for="imageFile">Select an image:</label>
-        <input type="file" id="imageFile" name="imageFile" />
+        <label class="formFile" for="imageFile">Select an image:</label>
+        <input class="form-control"type="file" id="imageFile" name="imageFile" />
     </div>
-
+    <br />
     <div>
-        <input type="submit" value="Upload Image" />
+        <input  class="btn btn-primary" type="submit" value="Upload Image" class="btn-primary" />
     </div>
 }
+<br />  
 <div>
-    @Html.ActionLink("Back to List", "ImagesOfUI")
+    @Html.ActionLink("Back to List", "ImagesOfUI","Admin", new { @class = "nav-button" })
 </div>
