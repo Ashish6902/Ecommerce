@@ -28,8 +28,35 @@ namespace Ecommerce.Controllers
         }
         [HttpPost]
         public ActionResult Register(Logins model) 
-        { 
-            if(ModelState.IsValid) 
+        {
+            using (var context = new EcommerceEntities())
+            {
+                bool usernameExists = context.Logins.Any(x => x.UserName == model.UserName);
+                bool PhoneExists = context.Logins.Any(x => x.PhoneNo == model.PhoneNo);
+                bool EmailExists = context.Logins.Any(x => x.Email == model.Email);
+                if (usernameExists)
+                {
+                    ModelState.AddModelError("Username", "Username already exists.");
+                    return View(model);
+                }
+                if (PhoneExists)
+                {
+                    ModelState.AddModelError("PhoneNumber", "Phone number already exists.");
+                }
+
+                if (EmailExists)
+                {
+                    ModelState.AddModelError("Email", "Email already exists.");
+                }
+
+                if (usernameExists || PhoneExists || EmailExists)
+                {
+                    return View(model);
+                }
+
+
+            }
+            if (ModelState.IsValid) 
             {
                 int i = repository.Adduser(model);
                 if(i>0) 

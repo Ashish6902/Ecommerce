@@ -114,7 +114,7 @@ namespace Ecommerce.Controllers
             bool check = dBcontext.DeleteData(pro);
             if (check == true)
             {
-                TempData["DeleteMessage"] = "Data Has been updated";
+                TempData["DeleteMessage"] = "Data Has been Deleted";
                 ModelState.Clear();
                 return RedirectToAction("products");
             }

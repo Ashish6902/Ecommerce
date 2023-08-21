@@ -36,5 +36,23 @@ namespace Ecommerce.Models.Seller
             conn.Close();
             return Seller_data;
         }
+        public bool DeleteSellerData(Seller cat)
+        {
+            SqlConnection conn = new SqlConnection(cs);
+            SqlCommand cmd = new SqlCommand("DeleteSellerData", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id", cat.Id);
+            conn.Open();
+            int i = cmd.ExecuteNonQuery();
+            conn.Close();
+            if (i > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

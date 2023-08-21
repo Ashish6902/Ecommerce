@@ -6,6 +6,13 @@
 }
 
 <h2>Sellers</h2>
+@if (TempData["DeleteMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Deleted!</strong> @TempData["DeleteMessage"].
+    </div>
+}
 
 <br />
 <table class="table table-hover table-bordered">
@@ -34,33 +41,34 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Brand)
-        </td>
-        <td>
-            @Html.ActionLink("Delete seller", "DeleteSeller","Admin", new { id=item.Id }, new { @class = "nav-button" })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.ActionLink("Delete seller", "DeleteSeller", "Admin", new { id = item.Id }, new { @class = "nav-button" })
+            </td>
+        </tr>
+    }
 
 </table>

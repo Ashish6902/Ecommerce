@@ -35,5 +35,23 @@ namespace Ecommerce.Models.user
             conn.Close();
             return User_data;
         }
+        public bool DeleteUserData(User cat)
+        {
+            SqlConnection conn = new SqlConnection(cs);
+            SqlCommand cmd = new SqlCommand("DeleteUserData", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id", cat.Id);
+            conn.Open();
+            int i = cmd.ExecuteNonQuery();
+            conn.Close();
+            if (i > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

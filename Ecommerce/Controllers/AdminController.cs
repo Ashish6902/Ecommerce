@@ -19,7 +19,7 @@ namespace Ecommerce.Controllers
             return View();
         }
 
-        // FOR CATEGORY ////////////////////////////////////////////////////////////////////////////////////////////////////
+        // FOR CATEGORY --------------------------------------------------------------------------------------------
 
         //Display Category 
         public ActionResult Category()
@@ -59,8 +59,6 @@ namespace Ecommerce.Controllers
                 return View();
             }
         }
-
-
         //to get edit Category
         public ActionResult Edit(int id)
         {
@@ -68,7 +66,6 @@ namespace Ecommerce.Controllers
             var row = dBcontext.GetData().Find(model => model.ID == id);
             return View(row);
         }
-
         //when click on submit button of edit 
         [HttpPost]
         public ActionResult Edit(int id, Category stu)
@@ -86,7 +83,6 @@ namespace Ecommerce.Controllers
             }
             return View();
         }
-
         //to get delete Category
         public ActionResult Delete(int id)
         {
@@ -95,7 +91,6 @@ namespace Ecommerce.Controllers
             return View(row);
         }
         //when click on delete
-
         [HttpPost]
         public ActionResult Delete(int id, Category cat)
         {
@@ -103,7 +98,7 @@ namespace Ecommerce.Controllers
             bool check = dBcontext.DeleteData(cat);
             if (check == true)
             {
-                TempData["DeleteMessage"] = "Data Has been updated";
+                TempData["DeleteMessage"] = "Data Has been Deleted";
                 ModelState.Clear();
                 return RedirectToAction("Category");
             }
@@ -113,8 +108,7 @@ namespace Ecommerce.Controllers
         //to display product
 
 
-
-        //FOR PRODUCTS ////////////////////////////////////////////////////////////////////////////////////////////// 
+        //FOR PRODUCTS -------------------------------------------------------------------------------------------------
 
         // to display products to admin
         public ActionResult Products()
@@ -122,11 +116,29 @@ namespace Ecommerce.Controllers
             ProductDBcontext dbcontext = new ProductDBcontext();
             List<Product> obj = dbcontext.GetAllProductsData();
             return View(obj);
+        }
+        public ActionResult DeleteProduct(int id)
+        {
+            ProductDBcontext dBcontext = new ProductDBcontext();
+            var row = dBcontext.GetAllProductsData().Find(model => model.Id == id);
+            return View(row);
+        }
+        [HttpPost]
+        public ActionResult DeleteProduct(int id,Product pro)
+        {
+            ProductDBcontext dBcontext = new ProductDBcontext();
+            bool check = dBcontext.DeleteData(pro);
+            if (check == true)
+            {
+                TempData["DeleteMessage"] = "Data Has been Deleted";
+                ModelState.Clear();
+                return RedirectToAction("products");
+            }
+
             return View();
         }
 
-
-        // FOR USER //////////////////////////////////////////////////////////////////////////////////////////////////
+        // FOR USER ------------------------------------------------------------------------------------------------------
 
         //to display users
         public ActionResult Users()
@@ -136,13 +148,29 @@ namespace Ecommerce.Controllers
             return View(obj);
 
         }
-        public ActionResult DeleteUser()
+        public ActionResult DeleteUser(int id)
         {
+            userDBcontext dBcontext = new userDBcontext();
+            var row = dBcontext.GetUserData().Find(model => model.Id == id);
+            return View(row);
+
+        }
+        [HttpPost]
+        public ActionResult DeleteUser(int id,User user)
+        {
+            userDBcontext dBcontext = new userDBcontext();
+            bool check = dBcontext.DeleteUserData(user);
+            if (check == true)
+            {
+                TempData["DeleteMessage"] = "Data Has been Deleted";
+                ModelState.Clear();
+                return RedirectToAction("Users");
+            }
 
             return View();
-        } //  incomplete 
+        }
 
-        // FOR SELLER //////////////////////////////////////////////////////////////////////////////////////////////////
+        // FOR SELLER ----------------------------------------------------------------------------------------------------
 
         //to display sellers
         public ActionResult Sellers()
@@ -151,9 +179,29 @@ namespace Ecommerce.Controllers
             List<Seller> obj = dbcontext.GetSellerData();
             return View(obj);
         }
+        public ActionResult DeleteSeller(int id)
+        {
+            sellerDBcontext dBcontext = new sellerDBcontext();
+            var row = dBcontext.GetSellerData().Find(model => model.Id == id);
+            return View(row);
 
+        }
+        [HttpPost]
+        public ActionResult DeleteSeller(int id, Seller seller)
+        {
+            sellerDBcontext dBcontext = new sellerDBcontext();
+            bool check = dBcontext.DeleteSellerData(seller);
+            if (check == true)
+            {
+                TempData["DeleteMessage"] = "Data Has been Deleted";
+                ModelState.Clear();
+                return RedirectToAction("Users");
+            }
 
-        // FOR SLIDERS IMAGE ////////////////////////////////////////////////////////////////////////////////////////////
+            return View();
+        }
+
+        // FOR SLIDERS IMAGE --------------------------------------------------------------------------------------------
 
         //to edit ui
         public ActionResult ImagesOfUI()
