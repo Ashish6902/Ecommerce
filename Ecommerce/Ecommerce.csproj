@@ -270,6 +270,10 @@
     <Content Include="Views\Admin\DeleteProduct.cshtml" />
     <Content Include="Views\Admin\DeleteUser.cshtml" />
     <Content Include="Views\Admin\DeleteSeller.cshtml" />
+    <Content Include="Views\Home\Buy.cshtml" />
+    <Content Include="Views\Home\UserDetails.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\SortByPrice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

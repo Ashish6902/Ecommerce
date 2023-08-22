@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Buy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .welcome-container {
+            text-align: center;
+            color: black;
+            color: #ffffff;
+            padding: 50px;
+        }
+        h2
+        {
+            color:black;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: black;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <h1>Your Order has been placed!</h1>
+        <h2>Your Order will be dilvered on your Address.</h2>
+        <br />
+        @Html.ActionLink("Back to Products", "Products", "Home", new { @class = "nav-button" })
+    </div>
+</body>

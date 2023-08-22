@@ -25,12 +25,12 @@ namespace Ecommerce.Models.Seller
                 Seller cat = new Seller();
                 cat.Id = Convert.ToInt32(dr.GetValue(0).ToString());
                 cat.UserName = dr.GetValue(1).ToString();
-                cat.FName = dr.GetValue(2).ToString();
-                cat.LName = dr.GetValue(3).ToString();
-                cat.Email = dr.GetValue(4).ToString();
+                cat.FName = dr.GetValue(3).ToString();
+                cat.LName = dr.GetValue(4).ToString();
+                cat.Email = dr.GetValue(6).ToString();
                 cat.Phone = Convert.ToInt64(dr.GetValue(5).ToString());
-                cat.address = dr.GetValue(6).ToString();
-                cat.Brand =dr.GetValue(7).ToString();
+                cat.address = dr.GetValue(7).ToString();
+                cat.Brand =dr.GetValue(8).ToString();
                 Seller_data.Add(cat);
             }
             conn.Close();

@@ -25,7 +25,7 @@
     <br />
 </div>
 
-@Html.ActionLink("Sort By Price", "SortByPrice", "Home", new { @class = "nav-button" })
+@Html.ActionLink("Sort By Popularity", "Products", "Home", new { @class = "nav-button" })
 <br />
 <br />
 @Html.ActionLink("Go to Cart", "Cart", "Home", new { @class = "nav-button" })
@@ -51,7 +51,7 @@
 
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.OrderBy(model => model.Price))
     {
         <tr>
             <td>

@@ -13,42 +13,12 @@
     <title>@ViewBag.Title</title>
     <style>
         body {
-            background-color: #F4EEE0; /* Background color */
+            background-color: #f8f9fa;
         }
 
         .container {
             margin-top: 100px;
         }
-
-        .card {
-            background-color: #6D5D6E; /* Card background color */
-            color: #F4EEE0; /* Text color inside the card */
-        }
-
-        .form-control {
-            background-color: #4F4557; /* Input background color */
-            color: #F4EEE0; /* Text color inside the input */
-        }
-
-        .btn-primary {
-            background-color: #393646; /* Login button background color */
-            border-color: #393646; /* Login button border color */
-        }
-
-            .btn-primary:hover {
-                background-color: #6D5D6E; /* Hover color for the login button */
-                border-color: #6D5D6E;
-            }
-
-        .btn-secondary {
-            background-color: #4F4557; /* Register button background color */
-            border-color: #4F4557; /* Register button border color */
-        }
-
-            .btn-secondary:hover {
-                background-color: #393646; /* Hover color for the register button */
-                border-color: #393646;
-            }
     </style>
 </head>
 <body>
@@ -75,6 +45,7 @@
                             <div class="mt-3">
                                 @Html.ActionLink("Register", "Register", "Accounts", new { @class = "btn btn-secondary" })
                             </div>
+
                         }
                     </div>
                 </div>
@@ -83,3 +54,5 @@
     </div>
 </body>
 </html>
+
+

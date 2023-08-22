@@ -12,52 +12,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>@ViewBag.Title</title>
     <style>
-        body {
-            background-color: #393646; /* Background color */
-        }
-
         .container {
             margin-top: 50px;
         }
-
-        .form-horizontal {
-            background-color: #6D5D6E; /* Form background color */
-            color: #F4EEE0; /* Text color inside the form */
-            padding: 20px;
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+            border: solid 1px;
+            border-color: gainsboro;
             border-radius: 10px;
-        }
-
-        .form-control {
-            background-color: #4F4557; /* Input background color */
-            color: #F4EEE0; /* Text color inside the input */
-            width: 100%; /* Adjust the width as needed */
-        }
-
-        .btn-default {
-            background-color: #393646; /* Create button background color */
-            border-color: #393646; /* Create button border color */
-            color: #F4EEE0; /* Text color on the create button */
-        }
-        btn-secondary {
-            background-color: #393646; /* Create button background color */
-            border-color: #393646; /* Create button border color */
-            color: #F4EEE0; /* Text color on the create button */
-        }
-
-        .btn-default:hover {
-            background-color: #6D5D6E; /* Hover color for the create button */
-            border-color: #6D5D6E;
-        }
-
-        .btn-link {
-            color: #4F4557; /* Link color to go back to list */
-        }
+            background-color:white;
     </style>
 
 </head>
 <body>
     <div class="container">
         <h2>Register</h2>
+        <br />
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
@@ -115,7 +88,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.UserAddress, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextAreaFor(model => model.UserAddress, new { htmlAttributes = new { @class = "form-control", @required = "required", @cols = 100 } })
+                        @Html.EditorFor(model => model.UserAddress, new { htmlAttributes = new { @class = "form-control", @required = "required", @cols = 100 } })
                         @Html.ValidationMessageFor(model => model.UserAddress, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -123,7 +96,7 @@
         <br />
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </div>
         <br />
@@ -133,7 +106,7 @@
     </div>
             
         }
-
+        <br />
 
     </div>
 </body>

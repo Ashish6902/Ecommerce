@@ -1,37 +1,13 @@
 ﻿@model IEnumerable<Ecommerce.Models.Product.Product>
 
-
 @{
-    ViewBag.Title = "Products";
+    ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<head>
-
-</head>
 <h2>Products</h2>
-<br />
-<div class="form-group">
-    @using (Html.BeginForm("Search", "Home", FormMethod.Get))
-    {
-        <div class="col-md-2 search-div" style="display: inline-block;">
-            @Html.DropDownList("Category", ViewBag.Categories as SelectList, "Select a category", new { @class = "form-control" })
-        </div>
-        <div class="col-md-2" style="display: inline-block;">
-            <input type="submit" value="Search" class="btn btn-primary" />
-        </div>
-    }
 
-    <br />
-</div>
 
-@Html.ActionLink("Sort By Price", "SortByPrice", "Home", new { @class = "nav-button" })
-<br />
-<br />
-@Html.ActionLink("Go to Cart", "Cart", "Home", new { @class = "nav-button" })
-
-<br />
-<br />
 <table class="table table-hover table-bordered">
     <tr>
         <th>
@@ -51,7 +27,7 @@
 
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.OrderBy(model => model.Price))
     {
         <tr>
             <td>
@@ -81,3 +57,4 @@
     }
 
 </table>
+@Html.ActionLink("Back To all Products", "Products","Home", new { @class = "nav-button" })

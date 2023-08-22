@@ -153,7 +153,37 @@ namespace Ecommerce.Models.Product
                         Product_data.Add(pro);
                     }
                 }
+                conn.Close();
             }
+            return Product_data;
+        }
+        //to search
+        public List<Product> SearchData(string ch)
+        {
+            List<Product> Product_data = new List<Product>();
+            SqlConnection conn = new SqlConnection(cs);
+            SqlCommand cmd = new SqlCommand("SearchData", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Category", ch);
+            conn.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                Product pro = new Product();
+                pro.Id = Convert.ToInt32(dr.GetValue(0).ToString());
+                pro.Price = Convert.ToInt32(dr.GetValue(1).ToString());
+                pro.ProductName = dr.GetValue(2).ToString();
+                pro.Description = dr.GetValue(3).ToString();
+                pro.Count = Convert.ToInt32(dr.GetValue(4).ToString());
+                pro.Category = dr.GetValue(5).ToString();
+                if (!dr.IsDBNull(6))
+                {
+                    pro.ImageDataBytes = (byte[])dr.GetValue(6);
+                }
+                pro.sellerId = Convert.ToInt32(dr.GetValue(7).ToString());
+                Product_data.Add(pro);
+            }
+            conn.Close();
             return Product_data;
         }
         //method to get only count

@@ -7,10 +7,7 @@
 
 <h2>Cart</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table class="table table-hover table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ProductName)
@@ -57,11 +54,16 @@
                 }
             </td>
             <td>
-                @Html.ActionLink("Remove", "DeleteCartData", new { id = item.Id })
+                @Html.ActionLink("Remove", "DeleteCartData", new { id = item.Id }, new { @class = "nav-button" })
             </td>
         </tr>
     }
 
 </table>
-<h2>Total Price is @Total</h2>
-@Html.ActionLink("Products", "Products", "Home")
+@Html.ActionLink("Products", "Products", "Home", new { @class = "nav-button" })
+<br />
+<br />
+
+<h2>Total Price is @Total Rs.</h2>
+<br />
+@Html.ActionLink("Buy", "Buy", "Home", new { @class = "nav-button" })

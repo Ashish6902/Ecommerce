@@ -25,15 +25,36 @@ namespace Ecommerce.Models.user
                 User cat = new User();
                 cat.Id = Convert.ToInt32(dr.GetValue(0).ToString());
                 cat.UserName = dr.GetValue(1).ToString();
-                cat.FName = dr.GetValue(2).ToString();
-                cat.LName = dr.GetValue(3).ToString();
-                cat.Email = dr.GetValue(4).ToString();
+                cat.FName = dr.GetValue(3).ToString();
+                cat.LName = dr.GetValue(4).ToString();
+                cat.Email = dr.GetValue(6).ToString();
                 cat.Phone = Convert.ToInt64(dr.GetValue(5).ToString());
-                cat.address = dr.GetValue(6).ToString();
+                cat.address = dr.GetValue(7).ToString();
+                cat.Password =dr.GetValue(2).ToString();
                 User_data.Add(cat);
             }
             conn.Close();
             return User_data;
+        }
+        public bool UpdateUserData(User cat)
+        {
+            SqlConnection conn = new SqlConnection(cs);
+            SqlCommand cmd = new SqlCommand("UpdateUserData", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", cat.Id);
+            cmd.Parameters.AddWithValue("@Password", cat.Password);
+            cmd.Parameters.AddWithValue("@Address", cat.address);
+            conn.Open();
+            int i = cmd.ExecuteNonQuery();
+            conn.Close();
+            if (i > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public bool DeleteUserData(User cat)
         {
