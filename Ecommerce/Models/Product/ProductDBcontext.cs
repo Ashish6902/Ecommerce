@@ -83,7 +83,7 @@ namespace Ecommerce.Models.Product
             }
         }
         // to update data in table 
-        public bool UpdateData(Product pro)
+        public bool UpdateData(Product pro,int userId)
         {
             SqlConnection conn = new SqlConnection(cs);
             SqlCommand cmd = new SqlCommand("UpdateProductData", conn);
@@ -93,6 +93,7 @@ namespace Ecommerce.Models.Product
             cmd.Parameters.AddWithValue("@Name", pro.ProductName);
             cmd.Parameters.AddWithValue("@Description", pro.Description);
             cmd.Parameters.AddWithValue("@count", pro.Count);
+            cmd.Parameters.AddWithValue("@userid", userId);
             conn.Open();
             int i = cmd.ExecuteNonQuery();
             conn.Close();
@@ -106,12 +107,13 @@ namespace Ecommerce.Models.Product
             }
         }
         // to delete data from table
-        public bool DeleteData(Product pro)
+        public bool DeleteData(Product pro, int userId)
         {
             SqlConnection conn = new SqlConnection(cs);
             SqlCommand cmd = new SqlCommand("DeleteProduct", conn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@id", pro.Id);
+            cmd.Parameters.AddWithValue("@userid", userId);
             conn.Open();
             int i = cmd.ExecuteNonQuery();
             conn.Close();

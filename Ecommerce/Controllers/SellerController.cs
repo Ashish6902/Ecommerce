@@ -81,11 +81,12 @@ namespace Ecommerce.Controllers
         [HttpPost]
         public ActionResult Edit(int id, Product pro)
         {
+            int userId = (int)Session["UserId"];
             pro.Id = id;
             if (ModelState.IsValid == true)
             {
                 ProductDBcontext dBcontext = new ProductDBcontext();
-                bool check = dBcontext.UpdateData(pro);
+                bool check = dBcontext.UpdateData(pro,userId);
                 if (check == true)
                 {
                     TempData["UpdateMessage"] = "Data Has been updated";
@@ -108,10 +109,9 @@ namespace Ecommerce.Controllers
         [HttpPost]
         public ActionResult Delete(int id, Product pro)
         {
-
-
+            int userId = (int)Session["UserId"];
             ProductDBcontext dBcontext = new ProductDBcontext();
-            bool check = dBcontext.DeleteData(pro);
+            bool check = dBcontext.DeleteData(pro, userId);
             if (check == true)
             {
                 TempData["DeleteMessage"] = "Data Has been Deleted";
