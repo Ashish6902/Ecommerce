@@ -22,4 +22,10 @@ Utilizing Entity Framework and ADO.NET, TrendyTrends ensures seamless interactio
 ## Screenshots
 
 ![App Screenshot](https://github.com/Ashish6902/Ecommerce/blob/master/Images/Screenshot%202024-03-14%20173450.png)
-
+![App Screenshot](https://github.com/Ashish6902/Ecommerce/blob/master/Images/Screenshot%202024-03-14%20173622.png)
+![App Screenshot](https://github.com/Ashish6902/Ecommerce/blob/master/Images/Screenshot%202024-03-14%20173737.png)
+![App Screenshot](https://github.com/Ashish6902/Ecommerce/blob/master/Images/Screenshot%202024-03-14%20173815.png)
+![App Screenshot](https://github.com/Ashish6902/Ecommerce/blob/master/Images/Screenshot%202024-03-14%20173903.png)
+![App Screenshot](https://github.com/Ashish6902/Ecommerce/blob/master/Images/Screenshot%202024-03-14%20175953.png)
+![App Screenshot](https://github.com/Ashish6902/Ecommerce/blob/master/Images/Screenshot%202024-03-14%20180040.png)
+![App Screenshot](https://github.com/Ashish6902/Ecommerce/blob/master/Images/Screenshot%202024-03-14%20180125.png)
